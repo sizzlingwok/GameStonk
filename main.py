@@ -92,7 +92,7 @@ increasing = True
 
 # Random quote
 listOfQuotes = ["HOLD THE LINE",
-    "GME TO THE MOON", "DIAMOND HANDS", "IF U/DFV HOLDS I HOLD", "I LIKE THIS STOCK", "IF HE'S IN IM IN!", "BUY THE DIPgrweger"]
+    "GME TO THE MOON", "DIAMOND HANDS", "IF U/DFV HOLDS I HOLD", "I LIKE THIS STOCK", "IF HE'S IN IM IN!"]
 
 selectedQuote = random.choice(listOfQuotes)
 
@@ -214,7 +214,7 @@ def game():
     time += 1
 
     # Every half a second
-    if random.randint(1,300) == 1:
+    if random.randint(1, 500) == 1:
         stonks_go_up = False
     
     # Calling my diamond hand wsb
@@ -312,23 +312,14 @@ while runInstance:
     # Handling key presses
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_UP]:
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP:
         # Buying stonks
-        pygame.mixer.Channel(hit_channel).play(hit_sound)
-        # if not hitloaded and not playing_tyler:
-        #     pygame.mixer.Channel(hit_channel).load('hitmarker.mp3')
-        #     hitloaded = True
-        # if not playing_tyler:
-        #     pygame.mixer.Channel(hit_channel).play(0)
-        buy_stock()
+            pygame.mixer.Channel(hit_channel).play(hit_sound)
+            buy_stock()
     if keys[pygame.K_DOWN]:
         # Selling stonks
         pygame.mixer.Channel(hit_channel).play(hit_sound)
-        # if not hitloaded and not playing_tyler:
-        #     pygame.mixer.Channel(hit_channel).play(pygame.mixer.Sound('hitmarker.mp3'))
-        #     hitloaded = True
-        # if not playing_tyler:
-        #     pygame.mixer.Channel(hit_channel).play(0)
         sell_stock()
 
     # Deciding to run menu or game    
